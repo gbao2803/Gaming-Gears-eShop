@@ -1,0 +1,64 @@
+﻿@model WebBanGear_63131848.Models.NguoiDung
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div >
+    <h3 class="text-xl py-4 text-danger font-semibold mb-2">Bạn có chắc chắn muốn xóa thông tin này?</h3>
+    <dl class="grid  gap-y-2">
+        <dt class="font-semibold">
+            @Html.DisplayNameFor(model => model.MaNguoiDung)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaNguoiDung)
+        </dd>
+        <dt class="font-semibold">
+            @Html.DisplayNameFor(model => model.HoTenND)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HoTenND)
+        </dd>
+
+        <dt class="font-semibold">
+            @Html.DisplayNameFor(model => model.TenDangNhap)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TenDangNhap)
+        </dd>
+        <dt class="font-semibold">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="font-semibold">
+            @Html.DisplayNameFor(model => model.DiaChiND)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DiaChiND)
+        </dd>
+        <dt class="font-semibold">
+            @Html.DisplayNameFor(model => model.MatKhau)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MatKhau)
+        </dd>
+        <dt class="font-semibold">
+            Phân quyền
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PhanQuyen.TenQuyen)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="mt-8">
+            <input type="submit" value="Xóa" class="btn btn-danger font-medium" />
+            @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-primary font-medium" })
+        </div>
+    }
+</div>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7cdd85ebe47c499e8df78d12110885e4" Name="Diagram1">
+        <EntityTypeShape EntityType="WebBanGear_63131848Model.ChiTietDonHang" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebBanGear_63131848Model.DonHang" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebBanGear_63131848Model.LoaiSanPham" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebBanGear_63131848Model.NguoiDung" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebBanGear_63131848Model.NhaCungCap" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebBanGear_63131848Model.PhanQuyen" Width="1.5" PointX="1.5" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebBanGear_63131848Model.SanPham" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="WebBanGear_63131848Model.CTDH_DONHANG_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="WebBanGear_63131848Model.CTDT_SANPHAM_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="WebBanGear_63131848Model.DONHANG_NGUOIDUNG_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="WebBanGear_63131848Model.SANPHAM_LOAISP_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="WebBanGear_63131848Model.NGUOIDUNG_PHANQUYEN_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="WebBanGear_63131848Model.SANPHAM_NCC_FK" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

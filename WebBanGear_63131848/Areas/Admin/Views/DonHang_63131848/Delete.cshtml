@@ -1,0 +1,65 @@
+﻿@model WebBanGear_63131848.Models.DonHang
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h3 class="py-4 text-danger mb-2 text-xl font-semibold">Bạn có chắc chắn muốn xóa thông tin này?</h3>
+    <dl class="gap-y-2 grid">
+        <dt class="font-semibold">
+            @Html.DisplayNameFor(model => model.MaDH)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaDH)
+        </dd>
+        <dt class="font-semibold">
+            @Html.DisplayNameFor(model => model.MaNguoiDung)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaNguoiDung)
+        </dd>
+        <dt class="font-semibold">
+            @Html.DisplayNameFor(model => model.NguoiDung.HoTenND)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NguoiDung.HoTenND)
+        </dd>
+        <dt class="font-semibold">
+            @Html.DisplayNameFor(model => model.DiaChiDH)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DiaChiDH)
+        </dd>
+        <dt class="font-semibold">
+            @Html.DisplayNameFor(model => model.NgayDat)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NgayDat)
+        </dd>
+        <dt class="font-semibold">
+            @Html.DisplayNameFor(model => model.TinhTrang)
+        </dt>
+        <dd>
+            @if (Model.TinhTrang.HasValue)
+            {
+                @Html.Raw(Model.TinhTrang.Value ? "Đã xác nhận" : "Chờ xác nhận")
+            }
+            else
+            {
+                @Html.Raw("Không xác định")
+            }
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="mt-8">
+            <input type="submit" value="Xóa" class="btn btn-danger font-medium" />
+            @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-primary font-medium" })
+        </div>
+    }
+</div>

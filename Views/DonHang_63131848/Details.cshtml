@@ -1,0 +1,75 @@
+﻿@model IEnumerable<WebBanGear_63131848.Models.ChiTietDonHang>
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var i = 0;
+    decimal? tongTien = 0;
+}
+
+
+<div class="mt-10 text-black container mx-auto">
+    <div class="my-10 shadow-md lg:flex">
+        <div class="bg-white px-10 py-10 w-full">
+            <div class="pb-8 flex justify-between">
+                <h1 class="text-2xl font-semibold">Chi tiết đơn hàng</h1>
+                <h2 class="text-2xl font-semibold"> </h2>
+            </div>
+                <table class="table">
+                    <thead>
+                        <tr class="text-black text-base font-bold">
+                            <th class="text-center">STT</th>
+                            <th>Sản phẩm</th>
+                            <th>Hình ảnh</th>
+                            <th>Đơn giá</th>
+                            <th>Số lượng</th>
+                            <th>Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            var itemTotal = item.SoLuong * item.SanPham.GiaTien;
+                            tongTien += itemTotal;
+                            <tr class="text-sm md:text-base">
+                                <td class="text-center">
+                                    @{i++;}
+                                    @i
+                                </td>
+                                <td>
+                                    <a class="">
+                                        @item.SanPham.TenSP
+                                    </a>
+                                </td>
+                                <td>
+                                    <img src="@Url.Content("~/HinhanhSP/" + item.SanPham.HinhAnh)" class="border-gray-300 rounded-md border object-cover duration-300 hover:cursor-pointer hover:scale-105" alt="" style="width: 100px; height: 80px;" />
+                                </td>
+                                <td>
+                                    @String.Format("{0:#,##0}đ", item.DonGia)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SoLuong)
+                                </td>
+                                <td class="text-[red] font-semibold">@string.Format("{0:#,##0đ}", itemTotal)</td>
+                            </tr>
+
+                        }
+                        
+        </table>
+                <div class="mt-4 flex justify-between">
+                    <div class="flex items-center">
+                        <a href="@Url.Action("Index")"
+                           class="btn btn-info text-white">
+                            Quay lại
+                        </a>
+                    </div>
+                    <div class="py-6 flex justify-end text-base font-semibold">
+                        <span class="pr-2">Tổng tiền: </span>
+                        <span class="text-[red]">
+                            @string.Format("{0:#,##0đ}", tongTien)
+                        </span>
+                    </div>
+                </div>
+        </div>
+
+    </div>
+</div>

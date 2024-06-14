@@ -1,0 +1,119 @@
+﻿@model WebBanGear_63131848.Models.SanPham
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="flex justify-between items-center py-4">
+    <h2 class="font-bold text-xl ">Thêm sản phẩm mới</h2>
+</div>
+
+@using (Html.BeginForm("Create", "SanPham_63131848", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+                @Html.AntiForgeryToken()
+
+            <div class="">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="mb-6 md:flex md:flex-col">
+        <div class="">
+            @Html.LabelFor(model => model.MaSP, htmlAttributes: new { @class = "block text-gray-500 font-bold text-lg md:text-left mb-1 md:mb-0 pr-4" })
+        </div>
+        <div class="">
+            <input type="text" value="@ViewBag.MaSP" disabled readonly class="bg-gray-200 appearance-none border-2 h-[45px] border-gray-300 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" />
+            @Html.ValidationMessageFor(model => model.MaSP, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="mb-6 md:flex md:flex-col">
+        <div class="">
+            @Html.LabelFor(model => model.TenSP, htmlAttributes: new { @class = "block text-gray-500 font-bold md:text-left text-lg mb-1 md:mb-0 pr-4" })
+        </div>
+        <div class="">
+            @Html.EditorFor(model => model.TenSP, new { htmlAttributes = new { @class = "bg-white appearance-none border-2 h-[45px] border-gray-200 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500", placeholder = "Tên sản phẩm" } })
+            @Html.ValidationMessageFor(model => model.TenSP, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="mb-6 md:flex md:flex-col">
+        <div class="">
+            @Html.LabelFor(model => model.MoTa, htmlAttributes: new { @class = "block text-gray-500 font-bold md:text-left text-lg mb-1 md:mb-0 pr-4" })
+        </div>
+        <div class="">
+            @Html.TextAreaFor(model => model.MoTa, new { @class = "bg-white appearance-none border-2 border-gray-200 rounded w-full h-[200px] py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500", placeholder = "Mô tả về sản phẩm" })
+            @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="mb-6 md:flex md:flex-col">
+        <div class="">
+            @Html.LabelFor(model => model.GiaTien, htmlAttributes: new { @class = "block text-gray-500 font-bold md:text-left text-lg mb-1 md:mb-0 pr-4" })
+        </div>
+        <div class="">
+            @Html.EditorFor(model => model.GiaTien, new { htmlAttributes = new { @class = "bg-white appearance-none border-2 h-[45px] border-gray-200 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500", placeholder = "Giá tiền", type = "number", min = "1", step = "any" } })
+            @Html.ValidationMessageFor(model => model.GiaTien, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="mb-6 md:flex md:flex-col">
+        <div class="">
+            @Html.LabelFor(model => model.SoLuong, htmlAttributes: new { @class = "block text-gray-500 font-bold md:text-left text-lg mb-1 md:mb-0 pr-4" })
+        </div>
+        <div class="">
+            @Html.EditorFor(model => model.SoLuong, new { htmlAttributes = new { @class = "bg-white appearance-none border-2 h-[45px] border-gray-200 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500", placeholder = "Số lượng sản phẩm" } })
+            @Html.ValidationMessageFor(model => model.SoLuong, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="mb-6 md:flex md:flex-col">
+        <div class="">
+            @Html.LabelFor(model => model.HinhAnh, htmlAttributes: new { @class = "block text-gray-500 font-bold md:text-left text-lg mb-1 md:mb-0 pr-4" })
+        </div>
+        <div class="">
+            <input type="file" name="AnhSP" required accept="image/*" class=" appearance-none  h-[45px] rounded w-full py-2 text-gray-700 leading-tight " />
+            @Html.ValidationMessageFor(model => model.HinhAnh, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="mb-6 md:flex md:flex-col">
+        <div>
+            @Html.LabelFor(model => model.TrangThai, htmlAttributes: new { @class = "block text-gray-500 font-bold md:text-left text-lg mb-1 md:mb-0 pr-4" })
+        </div>
+        <div>
+            @Html.DropDownListFor(model => model.TrangThai, new List<SelectListItem>
+             {
+                    new SelectListItem { Text = "Còn hàng", Value = "true" },
+                 new SelectListItem { Text = "Hết hàng", Value = "false" }
+
+             }, new { @class = "form-control px-2" })
+            @Html.ValidationMessageFor(model => model.TrangThai, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="mb-6 md:flex md:flex-col">
+        <p class="block text-gray-500 font-bold md:text-left text-lg mb-1 md:mb-0 pr-4">Loại sản phẩm</p>
+        <div class="">
+            @Html.DropDownList("MaLoaiSP", null, htmlAttributes: new { @class = "form-control px-2" })
+            @Html.ValidationMessageFor(model => model.MaLoaiSP, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="mb-6 md:flex md:flex-col">
+        <p class="block text-gray-500 font-bold md:text-left text-lg mb-1 md:mb-0 pr-4">Nhà cung cấp</p>
+        <div class="">
+            @Html.DropDownList("MaNCC", null, htmlAttributes: new { @class = "form-control px-2" })
+            @Html.ValidationMessageFor(model => model.NhaCungCap.TenNCC, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div>
+        <input type="submit" value="Thêm mới" class="btn btn-primary text-white font-medium" />
+        @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-danger text-white font-medium" })
+    </div>
+</div>
+}

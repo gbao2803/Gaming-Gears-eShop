@@ -1,0 +1,58 @@
+﻿@model IEnumerable<WebBanGear_63131848.Models.ChiTietDonHang>
+
+@{
+    int i = 0;
+    decimal? tongTien = 0;
+    ViewBag.Title = "Xem Chi Tiết Đơn Hàng";
+}
+
+<div class="space-x-4 flex">
+    <table class="table">
+        <thead>
+            <tr class="text-black text-base font-bold">
+                <th>STT</th>
+                <th>Sản phẩm</th>
+                <th class="text-center">Số lượng</th>
+                <th>Thành tiền</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+                var itemTotal = item.SoLuong * item.DonGia;
+                tongTien += itemTotal;
+                <tr class="text md:text-base">
+                    <td class="">
+                        @{i++;}
+                        @i
+                    </td>
+                    <td>
+                        <a class="">
+                            @item.SanPham.TenSP
+                        </a>
+                    </td>
+                    <td class="flex items-center justify-center text-center">
+                        <div class="flex items-center">
+                            @item.SoLuong
+                        </div>
+                    </td>
+                    <td class="text-[red] font-semibold">@string.Format("{0:#,##0đ}", itemTotal)</td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+</div>
+<div class="flex justify-between">
+    <div>
+            @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-default" })
+    </div>
+    <div class="my-4 font-bold">
+        Tổng tiền:
+        <span class="text-[red]">
+            @string.Format("{0:#,##0đ}", tongTien)
+        </span>
+    </div>
+</div>

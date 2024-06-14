@@ -1,0 +1,55 @@
+﻿@model WebBanGear_63131848.Models.ChiTietDonHang
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="py-4 flex items-center justify-between">
+    <h2 class="text-xl font-bold">Chỉnh sửa sản phẩm đơn hàng</h2>
+</div>
+
+@using (Html.BeginForm("Edit", "CTDH_63131848", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.MaDH)
+    @Html.HiddenFor(model => model.MaSP)
+    @Html.HiddenFor(model => model.DonGia)
+    @Html.HiddenFor(model => model.ThanhTien)
+    <div class="">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="mb-6 md:flex md:flex-col">
+            <p class="text-gray-500 mb-1 pr-4 block text-lg font-bold md:text-left md:mb-0">Mã đơn hàng</p>
+            <div class="">
+                @Html.DropDownList("MaDH", null, htmlAttributes: new { @class = "form-control px-2" })
+                @Html.ValidationMessageFor(model => model.MaDH, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="mb-6 md:flex md:flex-col">
+            <p class="text-gray-500 mb-1 pr-4 block text-lg font-bold md:text-left md:mb-0">Sản phẩm</p>
+            <div class="">
+                @Html.DropDownList("MaSP", null, htmlAttributes: new { @class = "form-control px-2" })
+                @Html.ValidationMessageFor(model => model.MaSP, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="mb-6 md:flex md:flex-col">
+            <div class="">
+                @Html.LabelFor(model => model.SoLuong, htmlAttributes: new { @class = "block text-gray-500 font-bold md:text-left text-lg mb-1 md:mb-0 pr-4" })
+            </div>
+            <div class="">
+                @Html.EditorFor(model => model.SoLuong, new { htmlAttributes = new { @class = "bg-white appearance-none border-2 h-[45px] border-gray-200 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500", placeholder = "Số lượng sản phẩm", type = "nummber" } })
+                @Html.ValidationMessageFor(model => model.SoLuong, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+
+        <div>
+            <input type="submit" value="Lưu" class="btn btn-primary text-white font-medium" />
+            @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-danger text-white font-medium" })
+        </div>
+    </div>
+}

@@ -1,0 +1,57 @@
+﻿@model WebBanGear_63131848.Models.Cart
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    [type=submit] {
+        background-color: #5AB2FF;
+    }
+
+    .test {
+        border: solid 1px dimgray;
+    }
+</style>
+
+
+@if (!string.IsNullOrEmpty(TempData["Notification"] as string))
+{
+    <div class="alert alert-info" role="alert">
+        @TempData["Notification"]
+    </div>
+}
+
+<div class="bg-white px-4 text-black w-full rounded-md lg:flex">
+    <div class="px-4 my-4 w-full lg:w-3/5">
+        <h1 class="py-4 border-b text-4xl font-semibold uppercase">Thông tin khách hàng</h1>
+        <form id="orderForm" class="my-4 w-full flex-col items-center justify-center" method="post" action="@Url.Action("Order", "ShoppingCart_63131848")">
+            @Html.AntiForgeryToken()
+            <div class="mb-6">
+                <label class="text-black mb-2 pr-4 block font-bold" for="HoTenKH">
+                    Họ tên khách hàng
+                </label>
+                <div class="w-full">
+                    <input id="HoTenKH" name="hoTen" class="input test input-bordered input-info w-full rounded-md" type="text" placeholder="Họ tên khách hàng">
+                </div>
+            </div>
+            <div class="mb-6">
+                <label class="text-black mb-2 pr-4 block font-bold" for="DiaChiND">
+                    Địa chỉ
+                </label>
+                <div class="w-full">
+                    <input id="DiaChiND" name="diaChi" class="input test input-bordered input-info w-full rounded-md" type="text" placeholder="Địa chỉ khách hàng">
+                </div>
+            </div>
+            <div class="mb-6">
+                <div class="w-full">
+                    <button id="placeOrderBtn" type="submit" class="btn btn-info text-white w-full text-xl">Đặt hàng</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="mx-4 px-4 my-4 w-full lg:w-2/5">
+        <h1 class="py-4 border-b text-4xl font-semibold uppercase">Giỏ hàng</h1>
+        @Html.Action("PartialCheckOut", "ShoppingCart_63131848")
+    </div>
+</div>

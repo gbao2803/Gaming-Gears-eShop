@@ -1,0 +1,54 @@
+﻿<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
+
+@{ Layout = null; }
+
+
+    <div class="hero min-h-screen w-full" style="background-image: url(https://www.desktopbackground.org/download/1440x900/2015/08/14/995218_admin-page-375-buzzerg_1600x1200_h.jpg);">
+        <div class="hero-overlay bg-opacity-60"></div>
+        <div class="text-neutral-content">
+            @using (Html.BeginForm("Login", "AdminLogin", FormMethod.Post, new { @class = "w-full max-w-xl mx-auto mt-8" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="px-6 py-8 mx-auto flex flex-col items-center justify-center md:h-screen lg:py-0">
+                    <div class="w-[800px] bg-white rounded-lg shadow dark:border dark:bg-gray-800 dark:border-gray-700 md:mt-0 xl:p-0">
+                        <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                            <h1 class="text-gray-900 text-center text-xl font-bold uppercase leading-tight tracking-tight dark:text-white md:text-2xl">
+                                Đăng nhập Admin
+                            </h1>
+
+                            <form class="space-y-4 md:space-y-6" action="#">
+                                <div>
+                                    <label for="tenDangNhapOrEmail" class="mb-2 text-gray-900 block text-sm font-medium dark:text-white">Tên đăng nhập/Email</label>
+                                    @Html.TextBox("tenDangNhapOrEmail", null, new { @class = "bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500", placeholder = "Nhập Tài khoản/Email", required = "" })
+                                    @Html.ValidationMessage("tenDangNhapOrEmail", "", new { @class = "text-danger" })
+                                </div>
+                                <div>
+                                    <label for="matKhau" class="mb-2 text-gray-900 block text-sm font-medium dark:text-white">Mật khẩu</label>
+                                    <input type="password" name="matKhau" placeholder="••••••••" class="bg-white border-gray-200 py-2 px-4 text-gray-700 w-full appearance-none rounded border-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" required="">
+                                    @Html.ValidationMessage("matKhau", "", new { @class = "text-danger" })
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-start">
+                                        <label class="text-[red] flex justify-start text-left text-sm font-medium">@ViewBag.Notification</label>
+                                        <label class="text-[red] flex justify-start text-left text-sm font-medium">@TempData["Notification"]</label>
+                                    </div>
+                                    <a href="#" class="text-[white] text-sm font-medium hover:underline dark:text-primary-500">Quên mật khẩu?</a>
+                                </div>
+                                <button type="submit" class="btn btn-primary px-5 py-2.5 text-md text-white w-full rounded-lg text-center font-medium">Đăng nhập</button>
+                                <p class="text-gray-500 text-sm font-light dark:text-gray-400">
+                                    Chưa có tài khoản? <a href="@Url.Action("Register")" class="text-primary-600 font-medium hover:underline dark:text-primary-500">Đăng ký</a>
+                                </p>
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+            }
+            </div>
+    </div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>

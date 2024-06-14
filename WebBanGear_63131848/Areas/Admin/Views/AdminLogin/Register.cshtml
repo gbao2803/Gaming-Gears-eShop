@@ -1,0 +1,73 @@
+﻿@model WebBanGear_63131848.Models.NguoiDung
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
+
+@{ Layout = null; }
+
+
+<div class="hero min-h-screen w-full" style="background-image: url(https://www.desktopbackground.org/download/1440x900/2015/08/14/995218_admin-page-375-buzzerg_1600x1200_h.jpg);">
+    <div class="hero-overlay bg-opacity-60"></div>
+    <div class="text-neutral-content">
+        @using (Html.BeginForm(null,null, FormMethod.Post, new { @class = "w-full max-w-xl mx-auto mt-8" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="px-6 py-8 mx-auto flex flex-col items-center justify-center md:h-screen lg:py-0">
+                <div class="w-[800px] bg-white rounded-lg shadow dark:border dark:bg-gray-800 dark:border-gray-700 md:mt-0 xl:p-0">
+                    <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                        <h1 class="text-gray-900 text-center text-xl font-bold uppercase leading-tight tracking-tight dark:text-white md:text-2xl">
+                            Đăng ký Admin
+                        </h1>
+                            <div>
+                                <label for="HoTenND" class="mb-2 text-gray-900 block text-sm font-medium dark:text-white">Họ tên</label>
+                                @Html.EditorFor(model => model.HoTenND, new { htmlAttributes = new { @class = "bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500", placeholder = "Họ tên", required = "" } })
+                                @Html.ValidationMessageFor(model => model.HoTenND, "", new { @class = "text-[red]" })
+                            </div>
+                            <div>
+                                <label for="TenDangNhap" class="mb-2 text-gray-900 block text-sm font-medium dark:text-white">Tên tài khoản</label>
+                                @Html.EditorFor(model => model.TenDangNhap, new { htmlAttributes = new { @class = "bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500", placeholder = "Tên đăng nhập", required = "" } })
+                                @Html.ValidationMessageFor(model => model.TenDangNhap, "", new { @class = "text-[red]" })
+                            </div>
+                            <div>
+                                <label for="Email" class="mb-2 text-gray-900 block text-sm font-medium dark:text-white">Email</label>
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500", placeholder = "Email", required = "" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-[red]" })
+                            </div>
+                            <div>
+                                <label for="DiaChiND" class="mb-2 text-gray-900 block text-sm font-medium dark:text-white">Địa chỉ</label>
+                                @Html.EditorFor(model => model.DiaChiND, new { htmlAttributes = new { @class = "bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500", placeholder = "Địa chỉ", required = "" } })
+                                @Html.ValidationMessageFor(model => model.DiaChiND, "", new { @class = "text-[red]" })
+                            </div>
+                            <div>
+                                <label for="MatKhau" class="mb-2 text-gray-900 block text-sm font-medium dark:text-white">Mật khẩu</label>
+                                @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500", placeholder = "*******", required = "" } })
+                                @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-[red]" })
+                            </div>
+                            <div>
+                                <label for="ReMatKhau" class="mb-2 text-gray-900 block text-sm font-medium dark:text-white">Xác nhận mật khẩu</label>
+                                @Html.EditorFor(model => model.ReMatKhau, new { htmlAttributes = new { @class = "bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500", placeholder = "*******", required = "" } })
+                                @Html.ValidationMessageFor(model => model.ReMatKhau, "", new { @class = "text-[red]" })
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-start">
+                                    <label class="text-[red] flex justify-start text-left text-sm font-medium">@ViewBag.Notification</label>
+                                    <label class="text-[red] flex justify-start text-left text-sm font-medium">@TempData["Notification"]</label>
+                                </div>
+                                <div>
+                                    <a class="hover:underline" href="@Url.Action("Login")">
+                                        Quay lại trang đăng nhập
+                                    </a>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary px-5 py-2.5 text-md text-white w-full rounded-lg text-center font-medium">Đăng ký</button>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>

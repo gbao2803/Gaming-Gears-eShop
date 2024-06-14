@@ -1,0 +1,36 @@
+﻿@model IEnumerable<WebBanGear_63131848.Models.LoaiSanPham>
+
+@if (Model != null && Model.Any())
+{
+    <div class="sm:pr-7 mb-10 sm:mb-0 sm:w-1/2 lg:w-4/12 xl:w-3/12">
+        <div class="mb-10 xl:mb-16">
+            <h2 class="mb-6 text-3xl leading-9 font-heading pl-4 font-medium">
+                <a href="@Url.Action("Index","Product_63131848")">Danh mục</a>
+            </h2>
+            @foreach (var item in Model)
+            {
+                <a href="@Url.Action("ProductFilter", "Product_63131848", new { categoryName = item.TenLoai })"
+                   class="category-name
+                   category-link flex items-center cursor-pointer justify-between py-2 px-8 mb-3 bg-white hover:bg-indigo-100 duration-200 rounded-xl bg-opacity-50 font-heading font-medium">
+                    <span class="category-name">@item.TenLoai</span>
+                </a>
+            }
+        </div>
+    </div>
+}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var urlParams = new URLSearchParams(window.location.search);
+        var currentCategory = urlParams.get('categoryName') ? urlParams.get('categoryName').toLowerCase() : null;
+
+        if (currentCategory) {
+            document.querySelectorAll('.category-link').forEach(function (link) {
+                var categoryName = link.querySelector('.category-name').textContent.toLowerCase();
+                if (categoryName === currentCategory) {
+                    link.classList.add('bg-indigo-100');
+                    link.querySelector('.category-name').classList.add('text-indigo-500');
+                }
+            });
+        }
+    });
+</script>

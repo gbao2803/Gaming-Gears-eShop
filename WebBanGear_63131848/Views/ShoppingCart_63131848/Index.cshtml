@@ -1,0 +1,165 @@
+﻿@model WebBanGear_63131848.Models.Cart
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int i = 0;
+    decimal? tongTien = 0;
+}
+
+<style>
+    input[type="number"].no-spinner::-webkit-outer-spin-button,
+    input[type="number"].no-spinner::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=submit] {
+        background-color: #FF204E;
+        color: white;
+    }
+    input[type=submit]:hover{
+        background-color: darkred;
+    }
+
+    input[type="number"].no-spinner {
+        -moz-appearance: textfield;
+    }
+
+    .quantity-button:not([disabled]) {
+        color: black;
+    }
+</style>
+
+<div class="mt-10 text-black container mx-auto">
+    <div class="my-10 shadow-md lg:flex">
+        <div class="bg-white px-10 py-10 w-full">
+            <div class="pb-8 flex justify-between">
+                <h1 class="text-2xl font-semibold">Giỏ hàng</h1>
+                <h2 class="text-2xl font-semibold"> </h2>
+            </div>
+
+            @if (Model != null && Model.Items != null && Model.Items.Any())
+            {
+                <table class="table">
+                    <thead>
+                        <tr class="text-black text-base font-bold">
+                            <th class="text-center">STT</th>
+                            <th>Sản phẩm</th>
+                            <th>Hình ảnh</th>
+                            <th class="text-center">Số lượng</th>
+                            <th>Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Items)
+                        {
+                            var itemTotal = item.Quantity * item.Product.GiaTien;
+                            tongTien += itemTotal;
+                            <tr class="text-sm md:text-base">
+                                <td class="text-center">
+                                    @{i++;}
+                                    @i
+                                </td>
+                                <td>
+                                    <a class="">
+                                        @item.Product.TenSP
+                                    </a>
+                                </td>
+                                <td>
+                                    <img src="@Url.Content("~/HinhanhSP/" + item.Product.HinhAnh)" class="border-gray-300 rounded-md border object-cover duration-300 hover:cursor-pointer hover:scale-105" alt="" style="width: 100px; height: 80px;" />
+                                </td>
+
+                                <td class="h-32 flex items-center justify-center text-center">
+                                    <form id="quantityForm" method="post" action="@Url.Action("UpdateCartQuantity", "ShoppingCart_63131848")">
+                                        <div class="flex items-center">
+                                            <button type="submit" name="action" value="decrement" id="decrement" class="quantity-button h-[40px] px-4 py-2 border-gray-300 rounded-l-md border text-xl hover:bg-gray-100 focus:outline-none" @((item.Quantity <= 1) ? "disabled" : "")>
+                                                <svg width="12" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M13.3332 8H7.99984H2.6665" stroke="#111111" stroke-width="2" stroke-linecap="round"></path>
+                                                </svg>
+                                            </button>
+                                            <input type="hidden" name="productId" value="@item.Product.MaSP" />
+                                            <input type="number" id="quantity" name="quantity" class="no-spinner w-12 h-[40px] text-black bg-white border-gray-300 border-b border-t text-center text-lg" value="@item.Quantity" readonly>
+                                            <button type="submit" name="action" value="increment" id="increment" class="quantity-button h-[40px] px-4 py-2 border-gray-300 text-black rounded-r-md border text-xl hover:bg-gray-100 focus:outline-none">
+                                                <svg width="12" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M8.00033 13.3334V8.00008M8.00033 8.00008V2.66675M8.00033 8.00008H13.3337M8.00033 8.00008H2.66699" stroke="#111111" stroke-width="2" stroke-linecap="round"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        @Html.AntiForgeryToken()
+                                    </form>
+                                </td>
+                                <td class="text-[red] font-semibold">@string.Format("{0:#,##0đ}", itemTotal)</td>
+                                <td>
+                                    @Html.ActionLink("Xóa", "RemoveFromCart", new { productId = item.Product.MaSP }, new { @class = "text-gray-600 hover:text-red-600 duration-200" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+                <div class="my-5 flex items-center justify-between">
+
+                    <div>
+                        <a href="@Url.Action("Index","Product_63131848")" class="text-indigo-600 flex text-sm font-semibold">
+
+                            <svg class="fill-current mr-2 text-indigo-600 w-4" viewBox="0 0 448 512"><path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z" /></svg>
+                            Tiếp tục mua hàng
+                        </a>
+                    </div>
+                    <div>
+                        @using (Html.BeginForm("ClearCart", "ShoppingCart_63131848", FormMethod.Post))
+                        {
+                            <input type="submit" value="Làm trống giỏ hàng" class="btn btn-danger my-5" />
+                        }
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="space-y-8">
+                    <p>Giỏ hàng của bạn đang trống</p>
+                    <a href="@Url.Action("Index","Product_63131848")" class="text-indigo-600 flex text-sm font-semibold">
+
+                        <svg class="fill-current mr-2 text-indigo-600 w-4" viewBox="0 0 448 512"><path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z" /></svg>
+                        Tiếp tục mua hàng
+                    </a>
+                </div>
+
+            }
+
+        </div>
+        @if (Model != null && Model.Items != null && Model.Items.Any())
+        {   
+            {
+                <div id="summary" class="px-8 py-10 w-full lg:w-1/3">
+                    <h1 class="pb-8 text-2xl font-semibold uppercase">Tổng quan đơn hàng</h1>
+
+                    <div class="mt-4">
+                        <div class="py-6 flex justify-between text-base font-semibold">
+                            <span>Tổng tiền</span>
+                            <span>
+                                @string.Format("{0:#,##0đ}", tongTien)
+                            </span>
+                    </div>
+                        <a href="@Url.Action("CheckDN","ShoppingCart_63131848")" class="btn bg-indigo-500 py-3 text-white w-full text-sm font-semibold uppercase duration-200 hover:bg-indigo-600">Đặt hàng</a>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div id="summary" class="px-8 py-10 w-full xl:w-1/3">
+                <h1 class="text-2xl font-semibold uppercase">Tổng quan đơn hàng</h1>
+
+                <div class="">
+                    <div class="py-6 text-[red] flex justify-between text-sm font-semibold uppercase">
+                        @TempData["Notification"]
+                    </div>
+                    <a href="@Url.Action("CheckDN","ShoppingCart_63131848")" class="btn bg-indigo-500 py-3 text-white w-full text-sm font-semibold uppercase duration-200 hover:bg-indigo-600">Đặt hàng</a>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+

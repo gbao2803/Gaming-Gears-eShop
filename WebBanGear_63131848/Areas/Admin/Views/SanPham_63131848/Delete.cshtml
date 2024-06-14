@@ -1,0 +1,78 @@
+﻿@model WebBanGear_63131848.Models.SanPham
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h3 class="text-xl py-4 text-danger font-semibold mb-2">Bạn có chắc chắn muốn xóa thông tin này?</h3>
+    <dl class="grid  gap-y-2">
+        <dt class="font-semibold">
+            @Html.DisplayNameFor(model => model.MaSP)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaSP)
+        </dd>
+        <dt class="font-semibold">
+            @Html.DisplayNameFor(model => model.TenSP)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TenSP)
+        </dd>
+
+        <dt class="font-semibold">
+            @Html.DisplayNameFor(model => model.MoTa)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+        <dt class="font-semibold">
+            @Html.DisplayNameFor(model => model.GiaTien)
+        </dt>
+        <dd>
+            @string.Format("{0:#,##0}đ", Model.GiaTien)
+        </dd>
+        <dt class="font-semibold">
+            @Html.DisplayNameFor(model => model.SoLuong)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SoLuong)
+        </dd>
+        <dt class="font-semibold">
+            @Html.DisplayNameFor(model => model.TrangThai)
+        </dt>
+        <dd>
+            @if (Model.TrangThai.HasValue)
+            {
+                @Html.Raw(Model.TrangThai.Value ? "Còn hàng" : "Hết hàng")
+            }
+            else
+            {
+                @Html.Raw("Không xác định")
+            }
+        </dd>
+        <dt class="font-semibold">
+            @Html.DisplayNameFor(model => model.LoaiSanPham.TenLoai)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LoaiSanPham.TenLoai)
+        </dd>
+        <dt class="font-semibold">
+            @Html.DisplayNameFor(model => model.NhaCungCap.TenNCC)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NhaCungCap.TenNCC)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="mt-8">
+            <input type="submit" value="Xóa" class="btn btn-danger font-medium" />
+            @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-primary font-medium" })
+        </div>
+    }
+</div>

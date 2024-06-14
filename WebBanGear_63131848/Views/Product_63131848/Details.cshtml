@@ -1,0 +1,130 @@
+﻿
+@model WebBanGear_63131848.Models.SanPham
+@{
+    ViewBag.Title = "Chi tiết sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<div>
+    <ul class="px-4 my-4 flex flex-wrap items-center">
+        <li class="mr-6">
+            <a class="text-gray-400 flex items-center text-sm font-medium hover:text-gray-500" href="@Url.Action("Index","Home")">
+                <span>Trang chủ</span>
+                <svg class="ml-6" width="4" height="7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.150291 0.898704C-0.0500975 0.692525 -0.0500975 0.359292 0.150291 0.154634C0.35068 -0.0507836 0.674443 -0.0523053 0.874831 0.154634L3.7386 3.12787C3.93899 3.33329 3.93899 3.66576 3.7386 3.8727L0.874832 6.84594C0.675191 7.05135 0.35068 7.05135 0.150292 6.84594C-0.0500972 6.63976 -0.0500972 6.30652 0.150292 6.10187L2.49888 3.49914L0.150291 0.898704Z" fill="currentColor"></path>
+                </svg>
+            </a>
+        </li>
+        <li class="mr-6">
+            <a class="text-gray-400 flex items-center text-sm font-medium hover:text-gray-500" href="@Url.Action("Index","Product_63131848")">
+                <span>Sản phẩm</span>
+                <svg class="ml-6" width="4" height="7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.150291 0.898704C-0.0500975 0.692525 -0.0500975 0.359292 0.150291 0.154634C0.35068 -0.0507836 0.674443 -0.0523053 0.874831 0.154634L3.7386 3.12787C3.93899 3.33329 3.93899 3.66576 3.7386 3.8727L0.874832 6.84594C0.675191 7.05135 0.35068 7.05135 0.150292 6.84594C-0.0500972 6.63976 -0.0500972 6.30652 0.150292 6.10187L2.49888 3.49914L0.150291 0.898704Z" fill="currentColor"></path>
+                </svg>
+            </a>
+        </li>
+        <li><a class="text-indigo-500 flex items-center justify-center text-sm font-medium hover:text-indigo-600">@Model.TenSP</a></li>
+    </ul>
+</div>
+
+<section class="pt-12 pb-24 bg-white text-black overflow-hidden rounded-xl drop-shadow-xl">
+
+    <div class="px-4 container relative mx-auto">
+        <h1 class="mb-24 font-heading text-center text-6xl font-medium md:text-7xl lg:text-8xl">
+            @Model.TenSP
+        </h1>
+        <div class="-mx-4 mb-14 flex flex-wrap md:mb-24">
+            <div class="px-4 mb-16 w-full lg:w-1/2 lg:mb-0">
+                <div class="mb-16 relative ml-auto w-full md:w-3/4">
+                    <div class="mx-auto w-4/6">
+                        <img src="@Url.Content("~/HinhanhSP/" + Model.HinhAnh)" alt="@Model.TenSP" />
+                    </div>
+                    <button class="left-0 -mt-20 absolute top-1/2 hover:text-darkBlueGray-400 md:-mt-0">
+                        <svg width="8" height="12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.21015 10.4594C7.59661 10.8128 7.59661 11.3841 7.21015 11.7349C6.82369 12.0871 6.19929 12.0897 5.81282 11.7349L0.289847 6.63794C-0.0966172 6.28579 -0.0966172 5.71584 0.289847 5.36108L5.81282 0.264109C6.19785 -0.0880364 6.82369 -0.0880364 7.21015 0.264109C7.59662 0.617558 7.59662 1.18882 7.21015 1.53966L2.68073 6.00147L7.21015 10.4594Z" fill="currentColor"></path>
+                        </svg>
+                    </button>
+                    <button class="right-0 -mt-20 absolute top-1/2 hover:text-darkBlueGray-400 md:-mt-0">
+                        <svg width="8" height="12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.289849 1.54064C-0.0966146 1.18719 -0.0966145 0.615928 0.28985 0.265087C0.676314 -0.087058 1.30071 -0.0896664 1.68718 0.265087L7.21015 5.36206C7.59662 5.71421 7.59662 6.28416 7.21015 6.63892L1.68718 11.7359C1.30215 12.088 0.676312 12.088 0.289848 11.7359C-0.0966159 11.3824 -0.0966159 10.8112 0.289848 10.4603L4.81927 5.99853L0.289849 1.54064Z" fill="currentColor"></path>
+                        </svg>
+                    </button>
+
+                </div>
+            </div>
+            <div class="px-4 w-full lg:w-1/2 xl:pl-20">
+                <div class="mb-6 max-w-xl">
+                    <p class="mb-8 flex items-start">
+                        <span class="text-blue-500 font-heading flex items-center text-6xl font-medium">
+                            <span class="mr-2 text-xl">đ</span>
+                            <span>@string.Format("{0:#,##0}", Model.GiaTien)</span>
+                        </span>
+                    </p>
+                    <p class="text-gray-500 my-10 text-lg">@Model.MoTa</p>
+                </div>
+
+                <div class="-mx-2 my-12 flex flex-wrap">
+                    <div class="px-2 mb-2 w-full md:w-2/3 md:mb-0">
+                        @using (Html.BeginForm("AddToCart", "ShoppingCart_63131848", FormMethod.Post))
+                        {
+                            @Html.Hidden("productId", Model.MaSP)
+                            <button class="py-4 px-2 font-heading text-white bg-blue-500 block w-full cursor-pointer rounded-xl text-center text-xl font-medium leading-8 tracking-tighter duration-200 hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                                Thêm vào giỏ hàng
+                            </button>
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="my-8">
+    @Html.Action("LaptopPartial", "LoaiSP_63131848")
+</div>
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        navText: ["<", ">"],
+        dots: false,
+        stagePadding: 20,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        responsive: {
+            0: {
+                items: 1,
+                nav: false
+            },
+            640: {
+                items: 2,
+                nav: false
+            },
+            1024: {
+                items: 3,
+                nav: false
+            },
+            1280: {
+                items: 4,
+                nav: false
+            },
+            1536: {
+                items: 5,
+                nav: false,
+                margin: 10
+            },
+        }
+    })
+</script>

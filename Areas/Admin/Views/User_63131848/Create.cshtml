@@ -1,0 +1,96 @@
+﻿@model WebBanGear_63131848.Models.NguoiDung
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+}
+
+<div class="flex justify-between items-center py-4">
+    <h2 class="font-bold text-xl ">Thêm khách hàng mới</h2>
+</div>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "w-full" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="mb-6 md:flex md:flex-col">
+        <div class="">
+            @Html.LabelFor(model => model.MaNguoiDung, htmlAttributes: new { @class = "block text-gray-500 font-bold text-lg md:text-left mb-1 md:mb-0 pr-4" })
+        </div>
+        <div class="">
+            <input type="text" value="@ViewBag.MaNguoiDung" disabled readonly class="bg-gray-200 appearance-none border-2 h-[45px] border-gray-300 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" />
+            @Html.ValidationMessageFor(model => model.MaNguoiDung, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="mb-6 md:flex md:flex-col">
+        <div class="">
+            @Html.LabelFor(model => model.HoTenND, htmlAttributes: new { @class = "block text-gray-500 font-bold md:text-left text-lg mb-1 md:mb-0 pr-4" })
+        </div>
+        <div class="">
+            @Html.EditorFor(model => model.HoTenND, new { htmlAttributes = new { @class = "bg-white appearance-none border-2 h-[45px] border-gray-200 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500", placeholder = "VD: Nguyễn Gia Bảo" } })
+            @Html.ValidationMessageFor(model => model.HoTenND, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="mb-6 md:flex md:flex-col">
+        <div class="">
+            @Html.LabelFor(model => model.TenDangNhap, htmlAttributes: new { @class = "block text-gray-500 font-bold md:text-left text-lg mb-1 md:mb-0 pr-4" })
+        </div>
+        <div class="">
+            @Html.EditorFor(model => model.TenDangNhap, new { htmlAttributes = new { @class = "bg-white appearance-none border-2 h-[45px] border-gray-200 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500", placeholder = "VD: gbao123" } })
+            @Html.ValidationMessageFor(model => model.TenDangNhap, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="mb-6 md:flex md:flex-col">
+        <div class="">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "block text-gray-500 font-bold md:text-left text-lg mb-1 md:mb-0 pr-4" })
+        </div>
+        <div class="">
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "bg-white appearance-none border-2 h-[45px] border-gray-200 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500", placeholder = "VD: gbao123@gmail.com", type = "email" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="mb-6 md:flex md:flex-col">
+        <div class="">
+            @Html.LabelFor(model => model.DiaChiND, htmlAttributes: new { @class = "block text-gray-500 font-bold md:text-left text-lg mb-1 md:mb-0 pr-4" })
+        </div>
+        <div class="">
+            @Html.EditorFor(model => model.DiaChiND, new { htmlAttributes = new { @class = "bg-white appearance-none border-2 h-[45px] border-gray-200 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500", placeholder = "VD: 123 đường Street" } })
+            @Html.ValidationMessageFor(model => model.DiaChiND, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="mb-6 md:flex md:flex-col">
+        <div class="">
+            @Html.LabelFor(model => model.MatKhau, htmlAttributes: new { @class = "block text-gray-500 font-bold md:text-left text-lg mb-1 md:mb-0 pr-4" })
+        </div>
+        <div class="">
+            @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "bg-white appearance-none border-2 h-[45px] border-gray-200 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500", placeholder = "Nhập mật khẩu người dùng" } })
+            @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="mb-6 md:flex md:flex-col">
+        <p class="block text-gray-500 font-bold md:text-left text-lg mb-1 md:mb-0 pr-4">Phân quyền</p>
+        <div class="">
+            @Html.DropDownList("MaQuyen", null, htmlAttributes: new { @class = "form-control px-2" })
+            @Html.ValidationMessageFor(model => model.MaQuyen, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div>
+        <input type="submit" value="Thêm mới" class="btn btn-primary text-white font-medium" />
+        @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-danger text-white font-medium" })
+
+    </div>
+</div>
+}

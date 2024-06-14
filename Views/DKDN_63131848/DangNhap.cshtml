@@ -1,0 +1,47 @@
+﻿@model WebBanGear_63131848.Models.NguoiDung
+
+@{
+    ViewBag.Title = "Login";
+}
+
+
+@using (Html.BeginForm("DangNhap", "DKDN_63131848", FormMethod.Post, new { @class = "w-full max-w-xl mx-auto mt-8" }))
+{
+    @Html.AntiForgeryToken()
+
+<div>
+    <h4 class="mb-6 text-black text-center text-3xl font-bold uppercase">Đăng nhập</h4>
+    <div class="mb-6 md:flex md:justify-center md:items-center">
+
+        <div class="w-full">
+            @Html.TextBox("tenDangNhapOrEmail", null, new { @class = "bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500", placeholder = "Nhập Tài khoản/Email" })
+            @Html.ValidationMessage("tenDangNhapOrEmail", "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="mb-6 md:flex md:justify-center md:items-center">
+
+        <div class="w-full">
+            @Html.Password("matKhau", null, new { @class = "bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500", placeholder = "Hãy nhập mật khẩu" })
+            @Html.ValidationMessage("matKhau", "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="mb-4 flex justify-between transition-all">
+        <label class="text-[red] flex justify-start text-left font-medium">@ViewBag.Notification</label>
+        <label class="text-[red] flex justify-start text-left font-medium">@TempData["Notification"]</label>
+        <a class="text-[blue] underline" href="@Url.Action("DangKy","DKDN_63131848")">
+            Chưa có tài khoản?
+        </a>
+    </div>
+    <div class="flex flex-col items-center justify-center">
+
+        <div>
+            <input type="submit" value="Đăng nhập" class="bg-[#7195D1] text-white py-2 px-4 w-full scale-100 rounded font-bold shadow transition-all hover:bg-[#7590D1] hover:cursor-pointer hover:scale-105 hover:text-white focus:shadow-outline focus:outline-none" />
+        </div>
+
+    </div>
+
+
+</div>
+}

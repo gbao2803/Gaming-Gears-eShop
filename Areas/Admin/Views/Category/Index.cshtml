@@ -1,0 +1,133 @@
+﻿@model IEnumerable<WebBanGear_63131848.Models.LoaiSanPham>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var grid = new WebGrid(Model, canPage: true, defaultSort: "STT", rowsPerPage: 6);
+}
+<style type="text/css">
+    .grid-footer {
+        color: #000;
+        font: 17px Calibri;
+        text-align: center;
+        font-weight: bold;
+    }
+
+        .grid-footer a {
+            color: blue;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            padding: 1px 10px 2px 10px;
+        }
+
+    th {
+        background-color: white;
+        color: black;
+        font-size: 16px;
+    }
+
+    td {
+        background-color: white;
+    }
+
+    .grid-footer td {
+        border: 0px solid;
+    }
+
+    .grid-footer a:active, a:hover {
+        color: #FFAD33;
+    }
+
+
+    table .table1 {
+        text-align: left;
+        margin-left: 0px;
+        margin-right: 0px;
+        width: 800px;
+        color: black;
+        background: white;
+    }
+
+    .tr, .td, .th {
+        text-align: left;
+        color: black;
+    }
+
+    td a {
+        color: blue;
+    }
+
+        td a:hover {
+            color: red;
+        }
+</style>
+
+
+@using (Html.BeginForm("Index", "Category", FormMethod.Get))
+{
+    @Html.AntiForgeryToken()
+    <div class="mb-4">
+        <div>
+            <h1 class="text-4xl text-center font-bold p-2">Tìm kiếm loại sản phẩm</h1>
+            <div class="mx-auto w-full max-w-4xl">
+                <div class="py-2 md:flex md:justify-center md:items-center">
+                    <div class="w-1/5">
+                        <label class="text-gray-500 mb-1 pr-4 block font-bold md:mb-0">Mã loại sản phẩm: </label>
+                    </div>
+                    <div class="w-2/5">
+                        <input type="text" name="maLoaiSP" value="@ViewBag.maLoaiSP" class="bg-white border-gray-200 py-2 px-2 text-gray-700 w-full appearance-none rounded border-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" />
+                    </div>
+                </div>
+                <div class="py-2 md:flex md:justify-center md:items-center">
+                    <div class="w-1/5">
+                        <label class="text-gray-500 mb-1 pr-4 block font-bold md:mb-0">Loại sản phẩm: </label>
+                    </div>
+                    <div class="w-2/5">
+                        <input type="text" name="loaiSP" value="@ViewBag.loaiSP" class="bg-white border-gray-200 py-2 px-2 text-gray-700 w-full appearance-none rounded border-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" />
+                    </div>
+                </div>
+
+
+                <div class="py-2 md:flex md:justify-center md:items-center">
+                    <input type="submit" name="submit" value="Tìm kiếm" class="btn btn-info mx-2" />
+                    <input type="button" name="Nhapmoi" value="Làm mới" class="btn btn-success" onclick="location.href='@Url.Action("Index", "Category")'" />
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="flex justify-between items-center p-4 bg-white border rounded-t-xl">
+        <div class="flex-col ">
+            <h2 class="font-bold text-xl my-3">Quản lý loại sản phẩm</h2>
+            <p class="text-red">@ViewBag.TB</p>
+        </div>
+        <p>
+            @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-info" })
+        </p>
+
+    </div>
+    <div id="gridContent" class="text-black">
+        @ViewBag.TB
+        @grid.GetHtml(
+             tableStyle: "table table-bordered table-hover",
+             footerStyle: "grid-footer",
+             fillEmptyRows: true,
+             mode: WebGridPagerModes.Numeric,
+             alternatingRowStyle: "alternatingRowStyle",
+             columns: new[]
+             {
+                grid.Column("STT", format: item => item.WebGrid.Rows.IndexOf(item) + 1 + Math.Round(Convert.ToDouble(grid.TotalRowCount / grid.PageCount) / grid.RowsPerPage) * grid.RowsPerPage * grid.PageIndex),
+                grid.Column("MaLoaiSP", "Mã loại sản phẩm"),
+                grid.Column("TenLoai", "Loại sản phẩm"),
+                grid.Column("MoTa", "Mô tả"),
+                grid.Column("ChucNang", "Chức năng", format:
+@<text>
+    @Html.ActionLink("Sửa", "Edit", new { id = item.MaLoaiSP }, new { @class = "btn btn-primary font-medium" })
+    @Html.ActionLink("Xóa", "Delete", new { id = item.MaLoaiSP }, new { @class = "btn btn-danger font-medium" })
+</text>)
+ }
+ )
+    </div>
+
+}

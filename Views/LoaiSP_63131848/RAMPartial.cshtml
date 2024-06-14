@@ -1,0 +1,58 @@
+﻿@using WebBanGear_63131848.Models;
+@model List<SanPham>
+
+<style>
+    [type=submit] {
+        background-color: #3B82F6;
+    }
+</style>
+
+
+<div class="bg-danger flex w-full justify-between bg-white p-2 py-5 rounded-t-md">
+    <a href="@Url.Action("ProductFilter", "Product_63131848", new { categoryName = "RAM" })" style="padding-left:20px" class="text-2xl font-semibold text-black cursor-pointer hover:text-indigo-500 duration-200">RAM</a>
+    <a href="@Url.Action("ProductFilter", "Product_63131848", new { categoryName = "RAM" })" style="padding-right:20px" class="text-2xl text-black font-semibold cursor-pointer hover:text-indigo-500 duration-200">Xem thêm</a>
+</div>
+<div class="w-full bg-white rounded-b-md">
+    <div class="owl-carousel owl-theme flex">
+        @foreach (var item in Model)
+        {
+            <div class="item card card-compact max-w-[250px] bg-base-100 m-4 drop-shadow-lg inline-block rounded-t-xl">
+                <a href="@Url.Action("Details", "Product_63131848", new { id = item.MaSP })">
+                    <figure class="border-0 outline-0 rounded-t-xl">
+                        <img src="@Url.Content("~/HinhanhSP/" + item.HinhAnh)" alt="@item.TenSP"
+                             class="border-0 outline-0 object-cover duration-500 hover:cursor-pointer hover:scale-105 " style="width: 300px; height: 200px;" />
+                    </figure>
+                </a>
+                <div class="card-body flex h-60 flex-col justify-between rounded-b-2xl bg-white">
+                    <h2 class="card-title text-base font-semibold text-black hover:cursor-pointer" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-oarient: vertical; overflow: hidden;">
+                        <a href="@Url.Action("Details", "Product_63131848", new { id = item.MaSP })">
+                            @item.TenSP
+                        </a>
+                    </h2>
+                    <div class="card-actions justify-start">
+                        <div style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;"
+                             class="badge badge-primary badge-outline text-sm">@item.LoaiSanPham.TenLoai</div>
+                            <div style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;"
+                                 class="badge badge-secondary badge-outline text-sm">@item.NhaCungCap.TenNCC</div>
+
+                            </div>
+                            <div class="card-actions justify-end ">
+                                <p class="text-[red] text-xl font-bold">@string.Format("{0:#,##0đ}", item.GiaTien)</p>
+                            </div>
+                            <div class="card-actions justify-end ">
+                                @using (Html.BeginForm("AddToCart", "ShoppingCart_63131848", FormMethod.Post))
+                                {
+                                    @Html.Hidden("productId", item.MaSP)
+                                    <button type="submit"
+                                            class="duration-200 block py-2 px-4 leading-8 font-heading font-medium tracking-tighter text-white text-center bg-blue-500 focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 hover:bg-blue-400 rounded-xl">
+                                        Thêm vào giỏ hàng
+                                    </button>
+                                }
+                            </div>
+
+                        </div>
+                    </div>
+                }
+    </div>
+</div>
+

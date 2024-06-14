@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.11.1/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="drawer">
+            <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
+            <div class="drawer-content flex flex-col">
+
+                <div class="bg-[#7195C1] text-[white] top-0 z-[1000] absolute sticky w-full">
+                    <!-- Navbar -->
+                    @Html.Partial("_LoginPartial")
+                </div>
+                
+
+                <!-- page content -->
+                <main class="bg-[#ECECEC] py-2 min-h-screen">
+                    <div class="container mx-auto">
+                        @RenderBody()
+                    </div>
+                </main>
+
+            </div>
+
+            <div class="drawer-side z-[10000]">
+                <label for="my-drawer-3" aria-label="close sidebar" class="drawer-overlay"></label>
+                <ul class="menu bg-[#4B76AA] text-[white] w-80 p-4 min-h-full text-lg">
+                    <!-- Sidebar content here -->
+                    <li>
+                        <a href="@Url.Action("Index","Home")">Trang chủ</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Product_63131848")">Sản phẩm</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","ShoppingCart_63131848")">Giỏ hàng</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/1hb6b8g5fHCr4uG380OdWEquB2Ck4gF2Gz0J1D" crossorigin="anonymous"></script>
+</body>
+
+
+</html>
+<footer class="footer footer-center p-4 bg-[#7195C1] text-white text-base-content font-semibold">
+    <aside>
+        <p>Copyright © 2024 - All right reserved by Nguyễn Gia Bảo</p>
+    </aside>
+</footer>

@@ -1,0 +1,93 @@
+﻿@model WebBanGear_63131848.Models.NguoiDung
+
+@{
+    ViewBag.Title = "Register";
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "w-full max-w-4xl mx-auto" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="">
+    <h4 class="mb-6 text-black text-center text-3xl font-bold uppercase">Đăng ký tài khoản</h4>
+
+    <div class="mb-6 md:flex md:justify-center md:items-center">
+        <div class="md:w-1/5">
+            @Html.LabelFor(model => model.HoTenND, "Họ tên", htmlAttributes: new { @class = "block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" })
+        </div>
+        <div class="md:w-4/5">
+            @Html.EditorFor(model => model.HoTenND, new { htmlAttributes = new { @class = "bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500", placeholder = "Tên tài khoản *" } })
+            @Html.ValidationMessageFor(model => model.HoTenND, "", new { @class = "text-[red]" })
+        </div>
+    </div>
+
+
+
+    <div class="mb-6 md:flex md:justify-center md:items-center">
+        <div class="md:w-1/5">
+            @Html.LabelFor(model => model.TenDangNhap, "Tên tài khoản", htmlAttributes: new { @class = "block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" })
+        </div>
+        <div class="md:w-4/5">
+            @Html.EditorFor(model => model.TenDangNhap, new { htmlAttributes = new { @class = "bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500", placeholder = "Tên tài khoản *" } })
+            @Html.ValidationMessageFor(model => model.TenDangNhap, "", new { @class = "text-[red]" })
+        </div>
+    </div>
+
+    <div class="mb-6 md:flex md:justify-center md:items-center">
+        <div class="md:w-1/5">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" })
+        </div>
+        <div class="md:w-4/5">
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500", placeholder = "Email *" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-[red]" })
+        </div>
+    </div>
+
+    <div class="mb-6 md:flex md:justify-center md:items-center">
+        <div class="md:w-1/5">
+            @Html.LabelFor(model => model.DiaChiND, "Địa chỉ", htmlAttributes: new { @class = "block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" })
+        </div>
+        <div class="md:w-4/5">
+            @Html.EditorFor(model => model.DiaChiND, new { htmlAttributes = new { @class = "bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500", placeholder = "Tên tài khoản *" } })
+            @Html.ValidationMessageFor(model => model.DiaChiND, "", new { @class = "text-[red]" })
+        </div>
+    </div>
+
+    <div class="mb-6 md:flex md:justify-center md:items-center">
+        <div class="w-1/5">
+            @Html.LabelFor(model => model.MatKhau, "Mật khẩu", htmlAttributes: new { @class = "block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" })
+        </div>
+        <div class="md:w-4/5">
+            @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500", placeholder = "Mật khẩu *", type = "password" } })
+            @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-[red]" })
+        </div>
+    </div>
+    <div class="mb-6 md:flex md:justify-center md:items-center">
+        <div class="w-1/5">
+            @Html.LabelFor(model => model.ReMatKhau, "Xác nhận mật khẩu", htmlAttributes: new { @class = "block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" })
+        </div>
+        <div class="md:w-4/5">
+            @Html.EditorFor(model => model.ReMatKhau, new { htmlAttributes = new { @class = "bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500", placeholder = "Xác nhận mật khẩu *", type = "password" } })
+            @Html.ValidationMessageFor(model => model.ReMatKhau, "", new { @class = "text-[red]" })
+        </div>
+    </div>
+    <div class="mb-4 flex justify-between">
+        <div>
+            @Html.ValidationSummary(true, "", new { @class = "text-[red]" })
+        </div>
+        <a class="text-[blue] underline" href="@Url.Action("DangNhap","DKDN_63131848")">
+            Quay lại trang đăng nhập
+        </a>
+    </div>
+
+    <div class="flex flex-col items-center justify-center">
+
+        <div>
+            <input type="submit" value="Đăng ký" class="bg-[#7195D1] text-white py-2 px-4 w-full scale-100 rounded font-bold shadow transition-all hover:bg-[#7590D1] hover:cursor-pointer hover:scale-105 hover:text-white focus:shadow-outline focus:outline-none" />
+        </div>
+        <div class="my-2 flex justify-start">
+            <label class="text-[red] flex justify-start text-left font-medium">@ViewBag.Notification</label>
+        </div>
+    </div>
+</div>
+}

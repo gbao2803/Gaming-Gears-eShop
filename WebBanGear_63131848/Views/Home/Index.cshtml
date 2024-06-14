@@ -1,0 +1,197 @@
+﻿@model List<WebBanGear_63131848.Models.LoaiSanPham>
+@{
+    ViewBag.Title = "BAOGEARS - Máy tính cao cấp & thiết bị chơi game";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+
+</style>
+
+
+<div id="default-carousel" class="relative w-full" data-carousel="slide">
+    <!-- Carousel wrapper -->
+    <div class="h-56 relative overflow-hidden rounded-lg md:h-[500px]">
+        <!-- Item 1 -->
+        <a href="@Url.Action("Index", "Product_63131848")">
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <img src="https://cdn.mykiot.vn/2022/12/1672392457f87f5f990c86752441b669b948cd9a87.png" class="-translate-x-1/2 -translate-y-1/2 absolute left-1/2 top-1/2 block w-full object-fill" alt="...">
+            </div>
+            <!-- Item 2 -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <img src="https://img.freepik.com/free-psd/gaming-blank-banner-background_23-2150390427.jpg?w=1380&t=st=1716199079~exp=1716199679~hmac=ee5aa3b5b0ffc3efe95c79ab0852361c7b64d8ba3831dfe622b4a7433629371c" class="-translate-x-1/2 -translate-y-1/2 absolute left-1/2 top-1/2 block w-full" alt="...">
+            </div>
+            <!-- Item 3 -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <img src="https://img.freepik.com/free-psd/3d-rendering-electronics-digital-world-sales_23-2151409028.jpg?w=1380&t=st=1716199179~exp=1716199779~hmac=087d23db62a72601cb254d0c95614c003ca62e2ba0b2528f8e5398ea56f3cf94" class="-translate-x-1/2 -translate-y-1/2 absolute left-1/2 top-1/2 block w-full" alt="...">
+            </div>
+            <!-- Item 4 -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <img src="https://evolvegamingpc.com.au/cdn/shop/files/product-banner-titan-2_1.jpg?v=1704756055" class="-translate-x-1/2 -translate-y-1/2 absolute left-1/2 top-1/2 block w-full" alt="...">
+            </div>
+        </a>
+
+    </div>
+    <!-- Slider indicators -->
+    <div class="-translate-x-1/2 bottom-5 space-x-3 absolute left-1/2 z-30 flex rtl:space-x-reverse">
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
+    </div>
+    <!-- Slider controls -->
+    <button type="button" class="top-0 start-0 px-4 group absolute z-30 flex h-full cursor-pointer items-center justify-center focus:outline-none" data-carousel-prev>
+        <span class="w-10 h-10 bg-white/30 inline-flex items-center justify-center rounded-full dark:bg-gray-800/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white group-focus:outline-none dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70">
+            <svg class="w-4 h-4 text-white rtl:rotate-180 dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
+            </svg>
+            <span class="sr-only">Previous</span>
+        </span>
+    </button>
+    <button type="button" class="top-0 end-0 px-4 group absolute z-30 flex h-full cursor-pointer items-center justify-center focus:outline-none" data-carousel-next>
+        <span class="w-10 h-10 bg-white/30 inline-flex items-center justify-center rounded-full dark:bg-gray-800/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white group-focus:outline-none dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70">
+            <svg class="w-4 h-4 text-white rtl:rotate-180 dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
+            </svg>
+            <span class="sr-only">Next</span>
+        </span>
+    </button>
+</div>
+
+<div class="my-4 flex">
+    <div class="menu bg-white text-black w-full rounded-md md:w-1/3">
+        @Html.Action("DanhmucPHome","Home")
+    </div>
+    <div class="flex w-full md:w-2/3">
+        <div>
+            <a href="@Url.Action("Index","Product_63131848")">
+                <img src="https://evolvegamingpc.com.au/cdn/shop/files/product-banner-titan-2_1.jpg?v=1704756055" class="h-full w-full" />
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<div class="my-4">
+    @Html.Action("CasePartial", "LoaiSP_63131848")
+</div>
+
+<div class="my-4">
+    @Html.Action("CPUPartial", "LoaiSP_63131848")
+</div>
+
+<div class="my-4">
+    @Html.Action("MainPartial", "LoaiSP_63131848")
+</div>
+
+<div class="my-4 md:flex">
+    <div class="w-full md:w-2/4">
+        <div class="hero bg-base-200 h-[550px]">
+            <div class="hero-content text-white text-center">
+                <div class="max-w-md">
+                    <h1 class="text-5xl font-bold">Laptop</h1>
+                    <p class="py-6">Máy tính xách tay được thiết kế tiện lợi cho việc di chuyển nhiều, di động thường xuyên của người dùng máy tính, nên có nhiều khác biệt quan trọng giữa desktop và laptop.</p>
+                    <a href="@Url.Action("ProductFilter", "Product_63131848", new { categoryName = "Laptop" })" class="btn btn-info">Xem thêm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-full md:w-3/4">
+        <a href="@Url.Action("ProductFilter", "Product_63131848", new { categoryName = "Laptop" })">
+            <img src="https://cdn.tgdd.vn/Files/2021/12/20/1405435/laptopgamingdohoah22_1280x720-800-resize.jpg" class="h-[550px] w-full" />
+        </a>
+    </div>
+</div>
+
+<div class="my-4">
+    @Html.Action("LaptopPartial", "LoaiSP_63131848")
+</div>
+
+<div class="my-4">
+    @Html.Action("RAMPartial", "LoaiSP_63131848")
+</div>
+
+
+
+<div class="my-4">
+    @Html.Action("MousePartial", "LoaiSP_63131848")
+</div>
+
+<div class="my-4 md:flex">
+    <div class="w-full md:w-3/4">
+        
+        <a href="@Url.Action("ProductFilter", "Product_63131848", new { categoryName = "Card đồ họa" })">
+            <img src="https://arabhardware.net/wp-content/uploads/2019/11/ASUS-GeForce-GTX-1660-SUPER-Series_Banner_1200x628-1024x536.jpg" class="h-[550px] w-full" />
+        </a>
+    </div>
+     <div class="w-full md:w-2/4">
+        <div class="hero bg-base-200 h-[550px]">
+            <div class="hero-content text-white text-center">
+                <div class="max-w-md">
+                    <h1 class="text-5xl font-bold">Card đồ họa</h1>
+                    <p class="py-6">Card đồ họa là một bộ phận chịu trách nhiệm xử lý các tác vụ liên quan đến đồ họa bao gồm hình ảnh, video</p>
+                    <a href="@Url.Action("ProductFilter", "Product_63131848", new { categoryName = "Card đồ họa" })" class="btn btn-info">Xem thêm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="my-4">
+    @Html.Action("CardPartial", "LoaiSP_63131848")
+</div>
+
+<div class="my-4">
+    @Html.Action("MonitorPartial", "LoaiSP_63131848")
+</div>
+
+<div class="my-4">
+    @Html.Action("PSUPartial", "LoaiSP_63131848")
+</div>
+
+<div class="my-4">
+    @Html.Action("DiskPartial", "LoaiSP_63131848")
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        navText: ["<", ">"],
+        dots: false,
+        stagePadding: 20,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        responsive: {
+            0: {
+                items: 1,
+                nav: false
+            },
+            640: {
+                items: 2,
+                nav: false
+            },
+            1024: {
+                items: 3,
+                nav: false
+            },
+            1280: {
+                items: 4,
+                nav: false
+            },
+            1536: {
+                items: 5,
+                nav: false,
+                margin: 10
+            },
+        }
+    })
+</script>

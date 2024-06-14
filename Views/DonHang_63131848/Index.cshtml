@@ -1,0 +1,56 @@
+﻿@model IEnumerable<WebBanGear_63131848.Models.DonHang>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="mt-10 text-black container mx-auto">
+    <div class="my-10 shadow-md lg:flex">
+        <div class="bg-white px-10 py-10 w-full">
+            <div class="pb-8 flex justify-between">
+                <h1 class="text-2xl font-semibold">Đơn hàng</h1>
+                <h2 class="text-2xl font-semibold"> </h2>
+            </div>
+
+            @if (Model != null && Model.Any())
+            {
+                <table class="table-striped table">
+                    <thead>
+                        <tr class="text-black text-base">
+                            <th>Mã đơn hàng</th>
+                            <th>Địa chỉ đặt hàng</th>
+                            <th>Ngày đặt</th>
+                            <th>Tình trạng</th>
+                            <th>Xem chi tiết</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.MaDH</td>
+                                <td>@item.DiaChiDH</td>
+                                <td>@(((DateTime)item.NgayDat).ToString("dd/MM/yyyy"))</td>       
+                                <td style="color: @(item.TinhTrang.HasValue && item.TinhTrang.Value ? "green" : "#FFBF00"); font-weight: bold;">
+                                    @(item.TinhTrang.HasValue && item.TinhTrang.Value ? "Đã xác nhận" : "Chờ xác nhận")
+                                </td>
+                                <td>
+                                    <button class="btn-primary">
+                                        @Html.ActionLink("Chi tiết", "Details", new { maDH = item.MaDH }, new { @class = "text-[black] hover:text-[red] duration-200" })
+                                    </button>
+                                </td>
+                            </tr>
+
+                        }
+                    </tbody>
+
+                </table>
+            }
+            else
+            {
+                <p>bạn chưa có đơn hàng nào cả</p>
+            }
+        </div>
+    </div>
+</div>

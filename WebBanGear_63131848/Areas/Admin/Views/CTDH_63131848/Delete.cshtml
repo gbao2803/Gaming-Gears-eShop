@@ -1,0 +1,52 @@
+﻿@model WebBanGear_63131848.Models.ChiTietDonHang
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h3 class="py-4 text-danger mb-2 text-xl font-semibold">Bạn có chắc chắn muốn xóa thông tin này?</h3>
+    <dl class="gap-y-2 grid">
+        <dt class="font-semibold">
+            @Html.DisplayNameFor(model => model.MaDH)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaDH)
+        </dd>
+        <dt class="font-semibold">
+            @Html.DisplayNameFor(model => model.MaSP)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaSP)
+        </dd>
+        <dt class="font-semibold">
+            @Html.DisplayNameFor(model => model.DonGia)
+        </dt>
+        <dd>
+            @string.Format("{0:#,##0}đ", Model.DonGia)
+        </dd>
+        <dt class="font-semibold">
+            @Html.DisplayNameFor(model => model.SoLuong)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SoLuong)
+        </dd>
+        <dt class="font-semibold">
+            @Html.DisplayNameFor(model => model.ThanhTien)
+        </dt>
+        <dd>
+            @string.Format("{0:#,##0}đ", Model.ThanhTien)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="mt-8">
+            <input type="submit" value="Xóa" class="btn btn-danger font-medium" />
+            @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-primary font-medium" })
+        </div>
+    }
+</div>

@@ -1,0 +1,81 @@
+﻿<!-- Sidebar -->
+@{ 
+    var u = Session["admin"] as WebBanGear_63131848.Models.NguoiDung;
+}
+<div class="sidebar">
+    <!-- Sidebar user (optional) -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+            <img src="~/Content/client/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+            <a href="#" class="d-block">@u.TenDangNhap</a>
+        </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>
+                        Bảng dữ liệu
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index","User_63131848")" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Người dùng</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index","DonHang_63131848")" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Đơn hàng</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index","CTDH_63131848")" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Chi tiết đơn hàng</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index","SanPham_63131848")" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Sản phẩm</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index","Category")" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Loại sản phẩm</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index","NhaCungCap_63131848")" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Nhà cung cấp</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("DangXuat","AdminLogin")" class="nav-link">
+                    <i class="fa-solid fa-right-from-bracket nav-icon text-red"></i>
+                    <p class="text-red">
+                       Đăng xuất
+                    </p>
+                </a>
+            </li>
+
+
+        </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+</div>
+<!-- /.sidebar -->

@@ -1,0 +1,55 @@
+﻿@model WebBanGear_63131848.Models.Cart
+
+@{
+    int i = 0;
+    decimal? tongTien = 0;
+}
+
+<div class="space-x-4 flex">
+    <table class="table">
+        <thead>
+            <tr class="text-black text-base font-bold">
+                <th>STT</th>
+                <th>Sản phẩm</th>
+                <th class="text-center">Số lượng</th>
+                <th>Thành tiền</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+
+                var itemTotal = item.Quantity * item.Product.GiaTien;
+                tongTien += itemTotal;
+                <tr class="text-sm md:text-base">
+                    <td class="text-center">
+                        @{i++;}
+                        @i
+                    </td>
+                    <td>
+                        <a class="">
+                            @item.Product.TenSP
+                        </a>
+                    </td>
+                    <td class="h-32 flex items-center justify-center text-center">
+                        <div class="flex items-center">
+                            @item.Quantity
+                        </div>
+                    </td>
+                    <td class="text-[red] font-semibold">@string.Format("{0:#,##0đ}", itemTotal)</td>
+                </tr>
+                    }
+
+            </tbody>
+
+        </table>
+    </div>
+    <div class="flex justify-between">
+        <div></div>
+        <div class="my-4 font-bold">
+            Tổng tiền:
+            <span class="text-[red]">
+                @string.Format("{0:#,##0đ}", tongTien)
+            </span>
+        </div>
+    </div>
