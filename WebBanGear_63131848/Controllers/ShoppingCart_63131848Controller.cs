@@ -176,7 +176,7 @@ namespace WebBanGear_63131848.Controllers
             cart.Clear();
             Session["Cart"] = cart;
             TempData["Notification"] = "Đặt hàng thành công!";
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "ShoppingCart_63131848");
         }
     }
 }
